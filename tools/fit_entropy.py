@@ -116,10 +116,10 @@ def main() -> None:
     print("2) 负例池为『非泄露』的保守近似（未逐条 API 验证），精确率是下界口径。")
 
 
-if __name__ == "__main__":
-    main()
-
-
 def _load_corpus(p):
     """语料以 gzip+base64 随仓（防触发托管平台密钥推送保护），此处解码。"""
     return gzip.decompress(base64.b64decode(p.read_bytes())).decode("utf-8")
+
+
+if __name__ == "__main__":
+    main()
