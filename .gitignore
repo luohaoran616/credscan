@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.db
+*.db-wal
+*.db-shm
+*.state.json
+honeytokens.json
+alerts.jsonl
+node_modules/
+website/.vitepress/dist/
+website/.vitepress/cache/
+.DS_Store
