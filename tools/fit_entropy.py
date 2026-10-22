@@ -2,7 +2,7 @@
 """M1：L3 熵阈值拟合（数学模型方案 §1.6 / §7）。
 
 在两个标注池上扫描 GenericHighEntropySecret.MIN_ENTROPY 的阈值 h，产出 P-R 表：
-  正例池 = tests/fixtures/corpus.txt（合成真凭据，全部为伪造样例）
+  正例池 = tests/fixtures/corpus.txt.b64（gzip+base64 编码的合成凭据样例，运行时解码）
   负例池 = 真实新发语料（默认 /tmp/bench/corpus_real，W3 基准的同批文件；
            该批 strong 命中经人工裁定全为示例/占位 → 视为"非泄露"的保守近似）
 
@@ -12,11 +12,11 @@
 用法（必须在 credscan/ 目录下运行，与 unittest 同约定）：
   python3 tools/fit_entropy.py [--bench /tmp/bench/corpus_real] [--target 0.9]
 """
-from __future__ import base64
-import gzip
-import annotations
+from __future__ import annotations
 
 import argparse
+import base64
+import gzip
 import os
 import re
 import sys
